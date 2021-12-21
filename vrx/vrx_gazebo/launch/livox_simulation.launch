@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- <arg name="world" default="$(find livox_laser_simulation)/worlds/standardrobots_factory.world" /> -->
+  <arg name="livox_sensor" default="$(find livox_laser_simulation)/urdf/livox_avia.xacro" />
+  
+  <!-- <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world)"/> 
+    <arg name="paused" value="false"/> 
+    <arg name="use_sim_time" value="true"/> 
+    <arg name="gui" value="true"/> 
+    <arg name="headless" value="false"/> 
+    <arg name="debug" value="false"/> 
+    <arg name="verbose" value="true"/>
+  </include> -->
+  <!-- Gazebo world to load -->
+  <arg name="world" default="$(find vrx_gazebo)/worlds/example_course.world" />
+  <!-- If true, run gazebo GUI -->
+  <arg name="gui" default="true" />
+  <!-- If true, run gazebo in verbose mode -->
+  <arg name="verbose" default="false"/>
+  <!-- Set various other gazebo arguments-->
+  <arg name="extra_gazebo_args" default=""/>
+  <!-- Start in a default namespace -->
+  <arg name="namespace" default="wamv"/>
+  <!-- Do we lock the vessel to the world? -->
+  <arg name="wamv_locked" default="false" />
+  <!-- Start paused? -->
+  <arg name="paused" default="false"/>
+  <!-- Acoustic pinger position(s) -->
+  <arg name="pinger_params" default="$(find vrx_gazebo)/config/pinger.yaml"/>
+
+  <!-- Initial USV location and attitude-->
+  <arg name="x" default="-532" />
+  <arg name="y" default="162" />
+  <arg name="z" default="0.1" />
+  <arg name="P" default="0" />
+  <arg name="R" default="0" />
+  <arg name="Y" default="1" />
+
+  <!-- Start Gazebo with the world file -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name"   value="$(arg world)"/>
+    <arg name="verbose"      value="$(arg verbose)"/>
+    <arg name="paused"       value="$(arg paused)"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui"          value="$(arg gui)" />
+    <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
+  </include>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg livox_sensor)" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" 
+                args="-urdf -model livox_robot -param robot_description" />
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find livox_laser_simulation)/rviz/livox_simulation.rviz"/>
+</launch>

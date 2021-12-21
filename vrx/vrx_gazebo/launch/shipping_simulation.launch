@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- Initial USV location and attitude-->  
+    <arg name="z" default="0.1" />
+    <arg name="P" default="0" />
+    <arg name="R" default="0" />
+    <arg name="Y" default="0" />
+
+    <!-- Initial wamv_1_1 x and y-->
+    <arg name="x_1_1" default="-1150" />
+    <arg name="y_1_1" default="210" />
+    <!-- Initial wamv_1_2 x and y-->
+    <arg name="x_1_2" default="-1150" />
+    <arg name="y_1_2" default="205" />
+    <!-- Initial wamv_1_3 x and y-->
+    <arg name="x_1_3" default="-1150" />
+    <arg name="y_1_3" default="200" />
+    <!-- Initial wamv_1_4 x and y-->
+    <arg name="x_1_4" default="-1150" />
+    <arg name="y_1_4" default="195" />
+    <!-- Initial wamv_1_5 x and y-->
+    <arg name="x_1_5" default="-1150" />
+    <arg name="y_1_5" default="190" />
+
+    <!-- Initial wamv_2_1 x and y-->
+    <arg name="x_2_1" default="-1160" />
+    <arg name="y_2_1" default="210" />
+    <!-- Initial wamv_2_2 x and y-->
+    <arg name="x_2_2" default="-1160" />
+    <arg name="y_2_2" default="205" />
+    <!-- Initial wamv_2_3 x and y-->
+    <arg name="x_2_3" default="-1160" />
+    <arg name="y_2_3" default="200" />
+    <!-- Initial wamv_2_4 x and y-->
+    <arg name="x_2_4" default="-1160" />
+    <arg name="y_2_4" default="195" />
+    <!-- Initial wamv_2_5 x and y-->
+    <arg name="x_2_5" default="-1160" />
+    <arg name="y_2_5" default="190" />
+
+    <!-- Initial wamv_3_1 x and y-->
+    <arg name="x_3_1" default="-1170" />
+    <arg name="y_3_1" default="210" />
+    <!-- Initial wamv_3_2 x and y-->
+    <arg name="x_3_2" default="-1170" />
+    <arg name="y_3_2" default="205" />
+    <!-- Initial wamv_3_3 x and y-->
+    <arg name="x_3_3" default="-1170" />
+    <arg name="y_3_3" default="200" />
+    <!-- Initial wamv_3_4 x and y-->
+    <arg name="x_3_4" default="-1170" />
+    <arg name="y_3_4" default="195" />
+    <!-- Initial wamv_3_5 x and y-->
+    <arg name="x_3_5" default="-1170" />
+    <arg name="y_3_5" default="190" />
+
+    <!-- Initial wamv_4_1 x and y-->
+    <arg name="x_4_1" default="-1180" />
+    <arg name="y_4_1" default="210" />
+    <!-- Initial wamv_4_2 x and y-->
+    <arg name="x_4_2" default="-1180" />
+    <arg name="y_4_2" default="205" />
+    <!-- Initial wamv_4_3 x and y-->
+    <arg name="x_4_3" default="-1180" />
+    <arg name="y_4_3" default="200" />
+    <!-- Initial wamv_4_4 x and y-->
+    <arg name="x_4_4" default="-1180" />
+    <arg name="y_4_4" default="195" />
+    <!-- Initial wamv_4_5 x and y-->
+    <arg name="x_4_5" default="-1180" />
+    <arg name="y_4_5" default="190" />
+
+    <!-- Initial wamv_5_1 x and y-->
+    <arg name="x_5_1" default="-1190" />
+    <arg name="y_5_1" default="210" />
+    <!-- Initial wamv_5_2 x and y-->
+    <arg name="x_5_2" default="-1190" />
+    <arg name="y_5_2" default="205" />
+    <!-- Initial wamv_5_3 x and y-->
+    <arg name="x_5_3" default="-1190" />
+    <arg name="y_5_3" default="200" />
+    <!-- Initial wamv_5_4 x and y-->
+    <arg name="x_5_4" default="-1190" />
+    <arg name="y_5_4" default="195" />
+    <!-- Initial wamv_5_5 x and y-->
+    <arg name="x_5_5" default="-1190" />
+    <arg name="y_5_5" default="190" />
+
+    <!-- Initial unified ship model-->
+    <arg name="urdf" default="$(find wamv_gazebo)/urdf/wamv_gazebo.urdf.xacro"/>
+    <param name="wamv_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf)'
+         locked:=False
+         thruster_config:=T
+         vrx_sensors_enabled:=False
+         namespace:=wamv_fleet "/>
+
+  <!-- Spawn model in Gazebo -->
+  <!-- wamv_1_1 model-->
+  <node name="spawn_model_1_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_1_1) -y $(arg y_1_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_1_1"/>
+  <!-- wamv_1_2 model-->
+  <node name="spawn_model_1_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_1_2) -y $(arg y_1_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_1_2"/>
+  <!-- wamv_1_3 model-->
+  <node name="spawn_model_1_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_1_3) -y $(arg y_1_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_1_3"/>
+  <!-- wamv_1_4 model-->
+  <node name="spawn_model_1_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_1_4) -y $(arg y_1_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_1_4"/>
+  <!-- wamv_1_5 model-->
+  <node name="spawn_model_1_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_1_5) -y $(arg y_1_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_1_5"/>
+
+  <!-- wamv_2_1 model-->
+  <node name="spawn_model_2_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_2_1) -y $(arg y_2_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_2_1"/>
+  <!-- wamv_2_2 model-->
+  <node name="spawn_model_2_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_2_2) -y $(arg y_2_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_2_2"/>
+  <!-- wamv_2_3 model-->
+  <node name="spawn_model_2_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_2_3) -y $(arg y_2_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_2_3"/>
+  <!-- wamv_2_4 model-->
+  <node name="spawn_model_2_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_2_4) -y $(arg y_2_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_2_4"/>
+  <!-- wamv_2_5 model-->
+  <node name="spawn_model_2_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_2_5) -y $(arg y_2_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_2_5"/>
+
+  <!-- wamv_3_1 model-->
+  <node name="spawn_model_3_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_3_1) -y $(arg y_3_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_3_1"/>
+  <!-- wamv_3_2 model-->
+  <node name="spawn_model_3_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_3_2) -y $(arg y_3_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_3_2"/>
+  <!-- wamv_3_3 model-->
+  <node name="spawn_model_3_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_3_3) -y $(arg y_3_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_3_3"/>
+  <!-- wamv_3_4 model-->
+  <node name="spawn_model_3_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_3_4) -y $(arg y_3_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_3_4"/>
+  <!-- wamv_3_5 model-->
+  <node name="spawn_model_3_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_3_5) -y $(arg y_3_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_3_5"/>
+
+  <!-- wamv_4_1 model-->
+  <node name="spawn_model_4_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_4_1) -y $(arg y_4_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_4_1"/>
+  <!-- wamv_4_2 model-->
+  <node name="spawn_model_4_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_4_2) -y $(arg y_4_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_4_2"/>
+  <!-- wamv_4_3 model-->
+  <node name="spawn_model_4_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_4_3) -y $(arg y_4_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_4_3"/>
+  <!-- wamv_4_4 model-->
+  <node name="spawn_model_4_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_4_4) -y $(arg y_4_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_4_4"/>
+  <!-- wamv_4_5 model-->
+  <node name="spawn_model_4_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_4_5) -y $(arg y_4_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_4_5"/>
+
+  <!-- wamv_5_1 model-->
+  <node name="spawn_model_5_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_5_1) -y $(arg y_5_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_5_1"/>
+  <!-- wamv_5_2 model-->
+  <node name="spawn_model_5_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_5_2) -y $(arg y_5_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_5_2"/>
+  <!-- wamv_5_3 model-->
+  <node name="spawn_model_5_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_5_3) -y $(arg y_5_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_5_3"/>
+  <!-- wamv_5_4 model-->
+  <node name="spawn_model_5_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_5_4) -y $(arg y_5_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_5_4"/>
+  <!-- wamv_5_5 model-->
+  <node name="spawn_model_5_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_5_5) -y $(arg y_5_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param wamv_fleet/robot_description -model wamv_5_5"/>
+
+    <!-- ######## Warship ########## -->
+    <!-- #####*** Warship Ship20 ***####### -->
+    <!-- Initial warship_ship20 x and y-->
+    <arg name="x_warship_ship20_1" default="-1200" /> 
+    <arg name="y_warship_ship20_1" default="210" />
+    <arg name="x_warship_ship20_2" default="-1200" /> 
+    <arg name="y_warship_ship20_2" default="205" />
+    <arg name="x_warship_ship20_3" default="-1200" /> 
+    <arg name="y_warship_ship20_3" default="200" />
+    <arg name="x_warship_ship20_4" default="-1200" /> 
+    <arg name="y_warship_ship20_4" default="195" />
+    <arg name="x_warship_ship20_5" default="-1200" /> 
+    <arg name="y_warship_ship20_5" default="190" />
+
+    <!-- Initial unified ship model-->
+    <!-- warship ship20 description-->
+    <arg name="urdf_warship_ship20" default="$(find wamv_gazebo)/urdf/warship/ship20.xacro"/>
+    <param name="warship_ship20_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf_warship_ship20)'
+         namespace:=warship_ship20_fleet "/>
+
+  <!-- warship_ship20_1 model-->
+  <node name="spawn_model_warship_ship20_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_ship20_1) -y $(arg y_warship_ship20_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_ship20_fleet/robot_description -model warship_ship20_1"/>
+  <!-- warship_ship20_2 model-->
+  <node name="spawn_model_warship_ship20_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_ship20_2) -y $(arg y_warship_ship20_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_ship20_fleet/robot_description -model warship_ship20_2"/>
+  <!-- warship_ship20_3 model-->
+  <node name="spawn_model_warship_ship20_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_ship20_3) -y $(arg y_warship_ship20_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_ship20_fleet/robot_description -model warship_ship20_3"/>
+  <!-- warship_ship20_4 model-->
+  <node name="spawn_model_warship_ship20_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_ship20_4) -y $(arg y_warship_ship20_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_ship20_fleet/robot_description -model warship_ship20_4"/>    
+  <!-- warship_ship20_5 model-->
+  <node name="spawn_model_warship_ship20_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_ship20_5) -y $(arg y_warship_ship20_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_ship20_fleet/robot_description -model warship_ship20_5"/>    
+
+
+    <!-- #####*** Warship Gray ***####### -->
+    <!-- Initial warship_gray x and y-->
+    <arg name="x_warship_gray_1" default="-1155" /> 
+    <arg name="y_warship_gray_1" default="175" />
+    <arg name="x_warship_gray_2" default="-1155" /> 
+    <arg name="y_warship_gray_2" default="165" />
+    <arg name="x_warship_gray_3" default="-1155" /> 
+    <arg name="y_warship_gray_3" default="155" />
+    <arg name="x_warship_gray_4" default="-1155" /> 
+    <arg name="y_warship_gray_4" default="145" />
+
+    <!-- Initial unified ship model-->
+    <!-- warship gray -->
+    <arg name="urdf_warship_gray" default="$(find wamv_gazebo)/urdf/warship/war_ship_gray.xacro"/>
+    <param name="warship_gray_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf_warship_gray)'
+         namespace:=warship_gray_fleet "/>
+
+  <!-- warship_gray_1 model-->
+  <node name="spawn_model_warship_gray_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_gray_1) -y $(arg y_warship_gray_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_gray_fleet/robot_description -model warship_gray_1"/>
+  <!-- warship_gray_2 model-->
+  <node name="spawn_model_warship_gray_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_gray_2) -y $(arg y_warship_gray_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_gray_fleet/robot_description -model warship_gray_2"/>
+  <!-- warship_gray_3 model-->
+  <node name="spawn_model_warship_gray_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_gray_3) -y $(arg y_warship_gray_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_gray_fleet/robot_description -model warship_gray_3"/>
+  <!-- warship_gray_4 model-->
+  <node name="spawn_model_warship_gray_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_gray_4) -y $(arg y_warship_gray_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_gray_fleet/robot_description -model warship_gray_4"/>
+
+    <!-- #####*** Warship Black ***####### -->
+    <!-- Initial warship_black x and y-->
+    <arg name="x_warship_black_1" default="-1176" /> 
+    <arg name="y_warship_black_1" default="175" />
+    <arg name="x_warship_black_2" default="-1176" /> 
+    <arg name="y_warship_black_2" default="165" />
+    <arg name="x_warship_black_3" default="-1176" /> 
+    <arg name="y_warship_black_3" default="155" />
+    <arg name="x_warship_black_4" default="-1176" /> 
+    <arg name="y_warship_black_4" default="145" />
+
+    <!-- Initial unified ship model-->
+    <!-- warship black description-->
+    <arg name="urdf_warship_black" default="$(find wamv_gazebo)/urdf/warship/war_ship_black.xacro"/>
+    <param name="warship_black_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf_warship_black)'
+         namespace:=warship_black_fleet "/>
+
+  <!-- warship_black_1 model-->
+  <node name="spawn_model_warship_black_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_black_1) -y $(arg y_warship_black_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_black_fleet/robot_description -model warship_black_1"/>
+  <!-- warship_black_2 model-->
+  <node name="spawn_model_warship_black_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_black_2) -y $(arg y_warship_black_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_black_fleet/robot_description -model warship_black_2"/>
+  <!-- warship_black_3 model-->
+  <node name="spawn_model_warship_black_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_black_3) -y $(arg y_warship_black_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_black_fleet/robot_description -model warship_black_3"/>
+  <!-- warship_black_4 model-->
+  <node name="spawn_model_warship_black_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_black_4) -y $(arg y_warship_black_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_black_fleet/robot_description -model warship_black_4"/>
+
+    <!-- #####*** Warship White ***####### -->
+    <!-- Initial warship_white x and y-->
+    <arg name="x_warship_white_1" default="-1197" /> 
+    <arg name="y_warship_white_1" default="175" />
+    <arg name="x_warship_white_2" default="-1197" /> 
+    <arg name="y_warship_white_2" default="165" />
+    <arg name="x_warship_white_3" default="-1197" /> 
+    <arg name="y_warship_white_3" default="155" />
+    <arg name="x_warship_white_4" default="-1197" /> 
+    <arg name="y_warship_white_4" default="145" />
+
+    <!-- Initial unified ship model-->
+    <!-- warship white description-->
+    <arg name="urdf_warship_white" default="$(find wamv_gazebo)/urdf/warship/war_ship_white.xacro"/>
+    <param name="warship_white_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf_warship_white)'
+         namespace:=warship_white_fleet "/>
+
+  <!-- warship_white_1 model-->
+  <node name="spawn_model_warship_white_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_white_1) -y $(arg y_warship_white_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_white_fleet/robot_description -model warship_white_1"/>
+  <!-- warship_white_2 model-->
+  <node name="spawn_model_warship_white_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_white_2) -y $(arg y_warship_white_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_white_fleet/robot_description -model warship_white_2"/>
+  <!-- warship_white_3 model-->
+  <node name="spawn_model_warship_white_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_white_3) -y $(arg y_warship_white_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_white_fleet/robot_description -model warship_white_3"/>
+  <!-- warship_white_4 model-->
+  <node name="spawn_model_warship_white_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_white_4) -y $(arg y_warship_white_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_white_fleet/robot_description -model warship_white_4"/>
+
+    <!-- #####*** Warship Blue ***####### -->
+    <!-- Initial warship_blue x and y-->
+    <arg name="x_warship_blue_1" default="-1155" /> 
+    <arg name="y_warship_blue_1" default="130" />
+    <arg name="x_warship_blue_2" default="-1155" /> 
+    <arg name="y_warship_blue_2" default="120" />
+    <arg name="x_warship_blue_3" default="-1155" /> 
+    <arg name="y_warship_blue_3" default="110" />
+    <arg name="x_warship_blue_4" default="-1155" /> 
+    <arg name="y_warship_blue_4" default="100" />
+
+    <!-- Initial unified ship model-->
+    <!-- warship blue description-->
+    <arg name="urdf_warship_blue" default="$(find wamv_gazebo)/urdf/warship/war_ship_blue.xacro"/>
+    <param name="warship_blue_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf_warship_blue)'
+         namespace:=warship_blue_fleet "/>
+
+  <!-- warship_blue_1 model-->
+  <node name="spawn_model_warship_blue_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_blue_1) -y $(arg y_warship_blue_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_blue_fleet/robot_description -model warship_blue_1"/>
+  <!-- warship_blue_2 model-->
+  <node name="spawn_model_warship_blue_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_blue_2) -y $(arg y_warship_blue_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_blue_fleet/robot_description -model warship_blue_2"/>
+  <!-- warship_blue_3 model-->
+  <node name="spawn_model_warship_blue_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_blue_3) -y $(arg y_warship_blue_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_blue_fleet/robot_description -model warship_blue_3"/>
+  <!-- warship_blue_4 model-->
+  <node name="spawn_model_warship_blue_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_warship_blue_4) -y $(arg y_warship_blue_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param warship_blue_fleet/robot_description -model warship_blue_4"/>
+
+    <!-- #####*** IPAC ships ***####### -->
+    <!-- #####*** ipac_005 ***####### -->
+    <!-- Initial ipac_005 x and y-->
+    <arg name="x_ipac_005_1" default="-1176" /> 
+    <arg name="y_ipac_005_1" default="130" />
+    <arg name="x_ipac_005_2" default="-1176" /> 
+    <arg name="y_ipac_005_2" default="122" />
+    <arg name="x_ipac_005_3" default="-1176" /> 
+    <arg name="y_ipac_005_3" default="114" />
+    <arg name="x_ipac_005_4" default="-1176" /> 
+    <arg name="y_ipac_005_4" default="106" />
+    <arg name="x_ipac_005_5" default="-1176" /> 
+    <arg name="y_ipac_005_5" default="98" />
+
+    <!-- Initial unified ship model-->
+    <!-- warship blue description-->
+    <arg name="urdf_ipac_005" default="$(find wamv_gazebo)/urdf/ipacship/ipac005_double.urdf.xacro"/>
+    <param name="ipac_005_fleet/robot_description"
+         command="$(find xacro)/xacro &#x002D;&#x002D;inorder '$(arg urdf_ipac_005)'
+         namespace:=ipac_005_fleet "/>
+
+  <!-- ipac_005_1 model-->
+  <node name="spawn_model_ipac_005_1" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_ipac_005_1) -y $(arg y_ipac_005_1) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param ipac_005_fleet/robot_description -model ipac_005_1"/>
+  <!-- ipac_005_2 model-->
+  <node name="spawn_model_ipac_005_2" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_ipac_005_2) -y $(arg y_ipac_005_2) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param ipac_005_fleet/robot_description -model ipac_005_2"/>
+  <!-- ipac_005_3 model-->
+  <node name="spawn_model_ipac_005_3" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_ipac_005_3) -y $(arg y_ipac_005_3) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param ipac_005_fleet/robot_description -model ipac_005_3"/>
+  <!-- ipac_005_4 model-->
+  <node name="spawn_model_ipac_005_4" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_ipac_005_4) -y $(arg y_ipac_005_4) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param ipac_005_fleet/robot_description -model ipac_005_4"/>
+  <!-- ipac_005_5 model-->
+  <node name="spawn_model_ipac_005_5" pkg="gazebo_ros" type="spawn_model"
+        args="-x $(arg x_ipac_005_5) -y $(arg y_ipac_005_5) -z $(arg z)
+                    -R $(arg R) -P $(arg P) -Y $(arg Y)
+                    -urdf -param ipac_005_fleet/robot_description -model ipac_005_5"/>
+
+
+</launch>

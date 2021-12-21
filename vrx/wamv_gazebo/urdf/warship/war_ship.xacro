@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="games">
+
+  <link name="base_link">
+   <visual>
+      <geometry>
+        <mesh filename="package://vrx_gazebo/models/ship/mesh/war_ship_5.DAE"/>
+      </geometry>
+      <origin rpy="1.5708 0 0" xyz="0.7 1.1 -0.6"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <mesh filename="package://vrx_gazebo/models/ship/mesh/war_ship_5.DAE"/>
+      </geometry>
+      <origin rpy="3.1415926535 0 3.1415926535" xyz="3 0 0"/>
+    </collision>
+
+    <inertial>
+      <origin
+        xyz="2.4561 -0.00018968 0.0026061"
+        rpy="0 0 0" />
+      <mass
+        value="25" />
+      <inertia
+        ixx="120"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="393"
+        iyz="0.0"
+        izz="2.76" />
+    </inertial>
+  </link>
+
+
+    <gazebo>
+      <plugin name="usv_dynamics_games" filename="libusv_gazebo_dynamics_plugin.so">
+        <bodyName>base_link</bodyName>
+        <!-- Must be same as the ocean model!-->
+        <waterLevel>0</waterLevel>
+        <waterDensity>997.8</waterDensity>
+        <!-- <waterDensity>0</waterDensity> -->
+        <!-- Added mass -->
+        <xDotU>0.0</xDotU>
+        <yDotV>0.0</yDotV>
+        <nDotR>0.0</nDotR>
+        <!-- Linear and quadratic drag -->
+        <xU>51.3</xU>
+        <xUU>72.4</xUU>
+        <yV>40.0</yV>
+        <yVV>0.0</yVV>
+        <zW>500.0</zW>
+        <kP>50.0</kP>
+        <mQ>50.0</mQ>
+        <nR>400.0</nR>
+        <nRR>0.0</nRR>
+        <!-- General dimensions -->
+        <!--<boatArea>2.2</boatArea>-->
+        <hullRadius>0.213</hullRadius>
+        <boatWidth>2.4</boatWidth>
+        <boatLength>4.9</boatLength>
+        <!-- Length discretization, AKA, "N" -->
+        <length_n>2</length_n>
+        <!-- Wave model -->
+        <wave_model>ocean_waves</wave_model>
+      </plugin>
+    </gazebo>
+
+</robot>

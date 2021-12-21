@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="namespace" default="wamv"/>
+
+  <!-- Convert Twist messages (from keyboard teleop) to Model state messages and use service -->
+  <node pkg="vrx_gazebo" type="twist2modelstate.py" name="twist2modelstate" output="screen" args="--name $(arg namespace)">
+  </node>
+
+  <!-- Keyboard teleop -->
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
+  </node>
+</launch>
